@@ -1,6 +1,8 @@
 from math import floor
 from random import uniform
 
+from utils import row_convert
+
 
 class Player:
     name = "Player"
@@ -12,6 +14,8 @@ class Player:
         self.symbol = symbol
         self.slot = []
 
+
+class Human(Player):
     def valid_slot(self, turn: int, board_size: int) -> bool:
         """Check if the chosen slot is our of range or not"""
 
@@ -33,7 +37,23 @@ class Player:
 
 
 class Computer(Player):
-    def empty_slot(self, board: list, board_size: int) -> None:
+    # def opponent_sibling_filled()
+    # def sibling_filled(self, board: list, board_size: int) -> list:
+    
+    def filled_slot(self, board:list, board_size: int) -> list:
+        """Return all filled slot on the board"""
+
+        filled_slot = list()
+        for row in range(board_size):
+            for col in range(board_size):
+                if board[row][col] != " ":
+                    filled_slot.append(row * board_size + col)
+
+        return filled_slot
+
+    def empty_slot(self, board: list, board_size: int) -> list:
+        """Return all empty slot on the board"""
+
         empty_slot = list()
         for row in range(board_size):
             for col in range(board_size):
@@ -58,8 +78,8 @@ class Weak(Computer):
 
 
 class Normal(Computer):
-    name = "Normal"
+    name = "Normal AI"
 
 
 class Strong(Computer):
-    name = "Strong"
+    name = "Strong AI"

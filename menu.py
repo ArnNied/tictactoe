@@ -1,4 +1,4 @@
-from player import Player, Weak, Normal, Strong
+from player import Human, Weak, Normal, Strong
 
 
 class Menu:
@@ -25,8 +25,8 @@ class Menu:
         )
 
     def pvp(self) -> None:
-        self.player_one = Player("X", "Player One")
-        self.player_two = Player("O", "Player Two")
+        self.player_one = Human("X", "Player One")
+        self.player_two = Human("O", "Player Two")
 
     def pve(self):
         available_ai = [strength.title() for strength in self.available_ai.keys()]
@@ -43,11 +43,11 @@ class Menu:
             first = input("First turn - Me | AI? ").lower()
 
             if first == "me":
-                self.player_one = Player("X", "Player")
+                self.player_one = Human("X", "Player")
                 self.player_two = self.available_ai[ai_strength]("O")
             elif first == "ai":
                 self.player_one = self.available_ai[ai_strength]("X")
-                self.player_two = Player("O", "Player")
+                self.player_two = Human("O", "Player")
             else:
                 print("Error: Invalid Input")
                 continue

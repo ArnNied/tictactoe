@@ -2,6 +2,7 @@ from math import floor
 from random import uniform
 
 from exception import GameEnd, GameStalemate
+from utils import row_convert
 
 
 class Tictactoe:
@@ -43,13 +44,6 @@ class Tictactoe:
             return False
 
         return True
-
-    def row_convert(self, data: int) -> tuple:
-        """Convert raw slot position to a value to access the board 2d array"""
-
-        row, col = divmod(data, self.board_size)
-
-        return row, col
 
     def line_check(self, line: set) -> bool:
         if len(line) == 1 and (
@@ -113,7 +107,7 @@ class Tictactoe:
                 if self.slot_empty(turn):
                     current_player.slot.append(turn)
 
-                    row, col = self.row_convert(turn)
+                    row, col = row_convert(turn, self.board_size)
                     self.board[row][col] = current_player.symbol
 
                     self.win_check()
