@@ -3,12 +3,13 @@ from random import uniform
 
 from exception import GameEnd, GameStalemate
 
+
 class Tictactoe:
     board = []
     board_size = 0
     current_turn = 1
 
-    players = ['player_one', 'player_two']
+    players = ["player_one", "player_two"]
     player_one = None
     player_two = None
 
@@ -26,13 +27,13 @@ class Tictactoe:
         """Assemble the board in x by x size with 'x' being self.board_size"""
 
         for i in range(self.board_size):
-            self.board.append([' ' for row in range(self.board_size)])
+            self.board.append([" " for row in range(self.board_size)])
 
     def board_show(self) -> None:
         """Prints the board to the console"""
 
         for row in self.board:
-            print('|'.join(row))
+            print("|".join(row))
 
     def slot_empty(self, data: int) -> bool:
         """Check if the chosen slot is occupied or not"""
@@ -51,7 +52,9 @@ class Tictactoe:
         return row, col
 
     def line_check(self, line: set) -> bool:
-        if len(line) == 1 and (self.player_one.symbol in line or self.player_two.symbol in line):
+        if len(line) == 1 and (
+            self.player_one.symbol in line or self.player_two.symbol in line
+        ):
             return True
 
     def row_win(self) -> bool:
@@ -64,6 +67,8 @@ class Tictactoe:
                 return True
 
     def col_win(self) -> bool:
+        """Column win check"""
+
         for i in range(self.board_size):
             col = set()
             for j in range(self.board_size):
@@ -73,16 +78,17 @@ class Tictactoe:
                 return True
 
     def diagonal_win(self) -> bool:
+        """Diagonal win check"""
+
         tl_br = set()
         for i in range(self.board_size):
             tl_br.add(self.board[i][i])
 
         tr_bl = set()
-        for i in range(-1, -self.board_size-1, -1):
-            tr_bl.add(self.board[abs(i)-1][i])
+        for i in range(-1, -self.board_size - 1, -1):
+            tr_bl.add(self.board[abs(i) - 1][i])
 
         return self.line_check(tl_br) or self.line_check(tr_bl)
-
 
     def win_check(self) -> None:
         """Check if win condition is met and end the game"""
@@ -91,8 +97,12 @@ class Tictactoe:
             raise GameEnd
 
     def start(self) -> None:
+        """Start the game"""
+
         while self.current_turn <= self.board_size * self.board_size:
-            current_player = getattr(self, self.players[floor(self.current_turn % len(self.players) - 1)])
+            current_player = getattr(
+                self, self.players[floor(self.current_turn % len(self.players) - 1)]
+            )
 
             print("")
             self.board_show()

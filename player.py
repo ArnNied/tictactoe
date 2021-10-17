@@ -1,6 +1,7 @@
 from math import floor
 from random import uniform
 
+
 class Player:
     name = "Player"
 
@@ -14,7 +15,7 @@ class Player:
     def valid_slot(self, turn: int, board_size: int) -> bool:
         """Check if the chosen slot is our of range or not"""
 
-        if turn < 0 or turn > board_size**2:
+        if turn < 0 or turn > board_size ** 2:
             print("Error: Out of range")
 
             return False
@@ -37,7 +38,7 @@ class Computer(Player):
         for row in range(board_size):
             for col in range(board_size):
                 if board[row][col] == " ":
-                    empty_slot.append(row*board_size + col)
+                    empty_slot.append(row * board_size + col)
 
         return empty_slot
 
@@ -51,11 +52,14 @@ class Computer(Player):
 
         return choice
 
+
 class Weak(Computer):
     name = "Weak AI"
 
+
 class Normal(Computer):
     name = "Normal"
+
 
 class Strong(Computer):
     name = "Strong"

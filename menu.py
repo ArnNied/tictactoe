@@ -1,5 +1,6 @@
 from player import Player, Weak, Normal, Strong
 
+
 class Menu:
     board_size = 0
     player_one = None
@@ -10,18 +11,18 @@ class Menu:
         "normal": Normal,
         "strong": Strong,
     }
+
     def __init__(self):
         self.splash()
         self.board_size_set()
         self.game_type()
 
     def splash(self) -> None:
+        """Splash screen"""
+
         print(
-            "===============",
-            "Tic Tac Toe",
-            "By: ArnNied",
-            "===============",
-            sep="\n")
+            "===============", "Tic Tac Toe", "By: ArnNied", "===============", sep="\n"
+        )
 
     def pvp(self) -> None:
         self.player_one = Player("X", "Player One")
@@ -53,8 +54,9 @@ class Menu:
 
             break
 
-
     def game_type(self):
+        """Set the opponent type whether it's another human or an AI"""
+
         game_type = input("Opponent - PvE | PvP? ").lower()
         if game_type == "pve":
             self.pve()
@@ -62,9 +64,10 @@ class Menu:
             self.pvp()
 
     def board_size_set(self):
+        """Set the board size"""
+
         board_size = int(input("Board size (x by x)? "))
         self.board_size = board_size
 
     def start(self) -> tuple:
         return self.board_size, self.player_one, self.player_two
-
