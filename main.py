@@ -3,8 +3,8 @@ from menu import Menu
 from tictactoe import Tictactoe
 
 if __name__ == "__main__":
-    player_one, player_two = Menu().start()
-    game = Tictactoe(3, player_one, player_two)
+    board_size, player_one, player_two = Menu().start()
+    game = Tictactoe(board_size, player_one, player_two)
     try:
         game.start()
     except GameEnd:

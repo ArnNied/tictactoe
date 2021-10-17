@@ -1,6 +1,7 @@
 from player import Player, Weak, Normal, Strong
 
 class Menu:
+    board_size = 0
     player_one = None
     player_two = None
 
@@ -11,6 +12,7 @@ class Menu:
     }
     def __init__(self):
         self.splash()
+        self.board_size_set()
         self.game_type()
 
     def splash(self) -> None:
@@ -59,6 +61,10 @@ class Menu:
         elif game_type == "pvp":
             self.pvp()
 
+    def board_size_set(self):
+        board_size = int(input("Board size (x by x)? "))
+        self.board_size = board_size
+
     def start(self) -> tuple:
-        return self.player_one, self.player_two
+        return self.board_size, self.player_one, self.player_two
 
