@@ -1,4 +1,4 @@
-from player import Human, Weak, Normal, Strong
+from player import Human, Normal, Strong, Weak
 
 
 class Menu:

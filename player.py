@@ -39,8 +39,8 @@ class Human(Player):
 class Computer(Player):
     # def opponent_sibling_filled()
     # def sibling_filled(self, board: list, board_size: int) -> list:
-    
-    def filled_slot(self, board:list, board_size: int) -> list:
+
+    def filled_slot(self, board: list, board_size: int) -> list:
         """Return all filled slot on the board"""
 
         filled_slot = list()
