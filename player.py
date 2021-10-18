@@ -1,5 +1,5 @@
 from math import floor
-from random import uniform
+from random import randrange
 
 from utils import row_convert
 
@@ -119,7 +119,7 @@ class Computer(Player):
     def turn(self, board: list, board_size: int) -> int:
         empty_slot = self.empty_slot(board, board_size)
 
-        random_choice = floor(uniform(0, len(empty_slot)))
+        random_choice = randrange(len(empty_slot))
         choice = empty_slot[random_choice]
 
         self.neighbour_of_filled(board, board_size)
