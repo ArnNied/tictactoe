@@ -1,7 +1,7 @@
 from math import floor
 from random import randrange
 
-from utils import row_convert
+from utils import rng, row_convert
 
 
 class Player:
@@ -37,6 +37,8 @@ class Human(Player):
 
 
 class Computer(Player):
+    aggresiveness = 0
+
     def neighbour_of_filled(self, board: list, board_size: int) -> list:
         filled_slot = self.filled_slot(board, board_size)
         board_full_size = board_size * board_size
@@ -92,7 +94,9 @@ class Computer(Player):
         for i in collide:
             neighbour.remove(i)
 
-        return neighbour
+        print(neighbour)
+
+        return list(neighbour)
 
     def filled_slot(self, board: list, board_size: int) -> list:
         """Return all filled slot on the board"""
@@ -117,7 +121,10 @@ class Computer(Player):
         return empty_slot
 
     def turn(self, board: list, board_size: int) -> int:
-        empty_slot = self.empty_slot(board, board_size)
+        empty_slot = empty_slot = self.empty_slot(board, board_size)
+
+        if rng(self.aggresiveness):
+            empty_slot = self.neighbour_of_filled(board, board_size) or empty_slot
 
         random_choice = randrange(len(empty_slot))
         choice = empty_slot[random_choice]
@@ -131,11 +138,14 @@ class Computer(Player):
 
 class Weak(Computer):
     name = "Weak AI"
+    aggresiveness = 0.2
 
 
 class Normal(Computer):
     name = "Normal AI"
+    aggresiveness = 0.5
 
 
 class Strong(Computer):
     name = "Strong AI"
+    aggresiveness = 0.95
