@@ -94,8 +94,6 @@ class Computer(Player):
         for i in collide:
             neighbour.remove(i)
 
-        print(neighbour)
-
         return list(neighbour)
 
     def filled_slot(self, board: list, board_size: int) -> list:
@@ -128,8 +126,6 @@ class Computer(Player):
 
         random_choice = randrange(len(empty_slot))
         choice = empty_slot[random_choice]
-
-        self.neighbour_of_filled(board, board_size)
 
         print(f"> {choice + 1}")
 
