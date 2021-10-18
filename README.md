@@ -12,8 +12,8 @@ The board is ordered from 1 to n*n (depending on the board size) from left-to-ri
 
 ### So a 3*3 board is ordered like:
 
-- | - | -
-- | - | -
+-- | -- | --
+-- | -- | --
 1 | 2 | 3
 4 | 5 | 6
 7 | 8 | 9
