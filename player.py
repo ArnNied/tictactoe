@@ -56,38 +56,29 @@ class Computer(Player):
             if y_up >= 0:
                 neighbour.add(y_up)
 
-            if y_up_left >= 0 and row_convert(y_up, board_size)[1] - 1 >= 0:
+            if y_up_left >= 0 and y_up % board_size - 1 >= 0:
                 neighbour.add(y_up_left)
 
-            if y_up_right >= 0 and row_convert(y_up, board_size)[1] + 1 < board_size:
+            if y_up_right >= 0 and y_up % board_size + 1 < board_size:
                 neighbour.add(y_up_right)
 
             if y_down < board_full_size:
                 neighbour.add(y_down)
 
-            if (
-                y_down_left < board_full_size
-                and row_convert(y_down, board_size)[1] - 1 >= 0
-            ):
+            if y_down_left < board_full_size and y_down % board_size - 1 >= 0:
                 neighbour.add(y_down_left)
 
-            if (
-                y_down_right < board_full_size
-                and row_convert(y_down, board_size)[1] + 1 < board_size
-            ):
+            if y_down_right < board_full_size and y_down % board_size + 1 < board_size:
                 neighbour.add(y_down_right)
 
             x = filled
             x_left = filled - 1
             x_right = filled + 1
 
-            if x_left >= 0 and row_convert(x, board_size)[1] - 1 >= 0:
+            if x_left >= 0 and x % board_size - 1 >= 0:
                 neighbour.add(x_left)
 
-            if (
-                x_right < board_full_size
-                and row_convert(x, board_size)[1] + 1 < board_size
-            ):
+            if x_right < board_full_size and x % board_size + 1 < board_size:
                 neighbour.add(x_left)
 
         collide = neighbour & set(filled_slot)
