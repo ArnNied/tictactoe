@@ -67,6 +67,10 @@ class Menu:
         """Set the board size"""
 
         board_size = int(input("Board size (x by x)? "))
+
+        if board_size <= 2:
+            raise ValueError("Error: Board Size Must Be A Minimum Of 3")
+
         self.board_size = board_size
 
     def start(self) -> tuple:
