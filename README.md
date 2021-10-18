@@ -1,7 +1,7 @@
 # Tic Tac Toe
 - Customizable board size
 - PvP or PvE
-- 3 levels of AI clustering aggresiveness
+- 3 levels of AI clustering aggressiveness
 
 ## How to run
 1. Navigate to folder

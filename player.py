@@ -37,7 +37,7 @@ class Human(Player):
 
 
 class Computer(Player):
-    aggresiveness = 0
+    aggressiveness = 0
 
     def neighbour_of_filled(self, board: list, board_size: int) -> list:
         filled_slot = self.filled_slot(board, board_size)
@@ -121,7 +121,7 @@ class Computer(Player):
     def turn(self, board: list, board_size: int) -> int:
         empty_slot = empty_slot = self.empty_slot(board, board_size)
 
-        if rng(self.aggresiveness):
+        if rng(self.aggressiveness):
             empty_slot = self.neighbour_of_filled(board, board_size) or empty_slot
 
         random_choice = randrange(len(empty_slot))
@@ -134,14 +134,14 @@ class Computer(Player):
 
 class Weak(Computer):
     name = "Weak AI"
-    aggresiveness = 0.2
+    aggressiveness = 0.2
 
 
 class Normal(Computer):
     name = "Normal AI"
-    aggresiveness = 0.5
+    aggressiveness = 0.5
 
 
 class Strong(Computer):
     name = "Strong AI"
-    aggresiveness = 0.95
+    aggressiveness = 0.95
