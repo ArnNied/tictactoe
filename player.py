@@ -110,7 +110,7 @@ class Computer(Player):
         return empty_slot
 
     def turn(self, board: list, board_size: int) -> int:
-        empty_slot = empty_slot = self.empty_slot(board, board_size)
+        empty_slot = self.empty_slot(board, board_size)
 
         if rng(self.aggressiveness):
             empty_slot = self.neighbour_of_filled(board, board_size) or empty_slot
