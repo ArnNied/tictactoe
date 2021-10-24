@@ -81,7 +81,7 @@ class Computer(Player):
             if x_right < board_full_size and x % board_size + 1 < board_size:
                 neighbour.add(x_left)
 
-        neighbour_not_filled = neighbour ^ set(filled_slot)
+        neighbour_not_filled = neighbour - set(filled_slot)
 
         return list(neighbour_not_filled)
 
