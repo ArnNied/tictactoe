@@ -1,10 +1,20 @@
+import utils
+
 from exception import GameEnd, GameStalemate
-from menu import Menu
 from tictactoe import Tictactoe
+from player import Player
 
 if __name__ == "__main__":
-    board_size, player_one, player_two = Menu().start()
-    game = Tictactoe(board_size, player_one, player_two)
+    while True:
+        try:
+            board_size = int(input("Board size? "))
+        except ValueError:
+            print("ValueError: Invalid board size")
+        else:
+            break
+
+    game = Tictactoe(board_size, Player("X", "Player 1"), Player("O", "Player 2"))
+
     try:
         game.start()
     except GameEnd:
@@ -12,5 +22,8 @@ if __name__ == "__main__":
     except GameStalemate:
         print("\nGame stalemate")
     finally:
-        game.board_show()
+        utils.clear_stdout()
+        game.board.show()
         print("FINAL BOARD STATE")
+
+    game.history.start()
